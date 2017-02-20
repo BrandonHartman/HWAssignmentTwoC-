@@ -2,7 +2,7 @@
 using namespace std;
 
 int getNumberForFactors();
-void SquareFree(int integer);
+int SquareFree(int integer);
 
 int main() {
 
@@ -18,8 +18,8 @@ int main() {
     cout << "Enter the 2nd integer of the pair, between 2 and 5000: " << endl;
     userInputTwo = getNumberForFactors();
 
-    SquareFree(int userInputOne,firstCounterForPerfectSquare);
-    SquareFree(int userInputTwo,secondCounterForPerfectSquare);
+    SquareFree(firstCounterForPerfectSquare);
+    SquareFree(secondCounterForPerfectSquare);
 
 
     if (firstCounterForPerfectSquare == 0 && secondCounterForPerfectSquare == 0)
@@ -29,7 +29,7 @@ int main() {
         cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SOUR.";
 
     else if (firstCounterForPerfectSquare >= 1 && secondCounterForPerfectSquare == 0)
-            cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SALTY.";
+        cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SALTY.";
 
     else
         cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is BITTER.";
@@ -51,7 +51,7 @@ int getNumberForFactors() {
 
 }
 
-void SquareFree(int integer){
+int SquareFree(int integer){
     int count;
     for (int loopInteger = 2; loopInteger * loopInteger <= integer; loopInteger++){
 
@@ -68,5 +68,7 @@ void SquareFree(int integer){
             cout << endl;
             cout << integer << " is square free. ";
         }
+        return count;
+
     }
 }
