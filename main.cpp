@@ -9,8 +9,8 @@ int main() {
     int userInputOne;
     int userInputTwo;
 
-    int firstCounterForPerfectSquare = 0;
-    int secondCounterForPerfectSquare = 0;
+    int firstNumberOfSquare = 0;
+    int secondNumberOfSquare = 0;
 
     cout << "Enter the 1st integer of the pair, between 2 and 5000: " << endl;
     userInputOne = getNumberForFactors();
@@ -18,17 +18,16 @@ int main() {
     cout << "Enter the 2nd integer of the pair, between 2 and 5000: " << endl;
     userInputTwo = getNumberForFactors();
 
-    SquareFree(firstCounterForPerfectSquare);
-    SquareFree(secondCounterForPerfectSquare);
+    firstNumberOfSquare = SquareFree(userInputOne);
+    secondNumberOfSquare = SquareFree(userInputTwo);
 
-
-    if (firstCounterForPerfectSquare == 0 && secondCounterForPerfectSquare == 0)
+    if (firstNumberOfSquare == 0 && secondNumberOfSquare == 0)
         cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SWEET.";
 
-    else if (firstCounterForPerfectSquare == 0 && secondCounterForPerfectSquare >= 1)
+    else if (firstNumberOfSquare == 0 && secondNumberOfSquare >= 1)
         cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SOUR.";
 
-    else if (firstCounterForPerfectSquare >= 1 && secondCounterForPerfectSquare == 0)
+    else if (firstNumberOfSquare >= 1 && secondNumberOfSquare == 0)
         cout << "Therefore, the ordered pair (" << userInputOne << "," << userInputTwo << ") is SALTY.";
 
     else
@@ -41,34 +40,37 @@ int getNumberForFactors() {
 
     cin >> numberEnteredByUser;
 
-    while (numberEnteredByUser < 2 || numberEnteredByUser > 5000) {
+    while (numberEnteredByUser < 2 || numberEnteredByUser > 5000){
 
         cout << "That number is not between 2 and 5000.";
         cin >> numberEnteredByUser;
-
     }
-    return numberEnteredByUser;
+    return  numberEnteredByUser;
 
 }
 
-int SquareFree(int integer){
-    int count;
-    for (int loopInteger = 2; loopInteger * loopInteger <= integer; loopInteger++){
+int SquareFree(int userInput){
 
-        if (integer % (loopInteger * loopInteger) == 0){
+    int count = 0;
+    for (int loopInteger = 2; loopInteger * loopInteger <= userInput; loopInteger++){
 
-            cout << integer << " has these factors that are (<1), that are squares: " << loopInteger * loopInteger;
+        if (userInput % (loopInteger * loopInteger) == 0){
+
+            cout << userInput << " has these factors that are (>1), that are squares: " << loopInteger << endl;
             cout << endl;
-            cout << integer << "is not square free.";
             count++;
-
         }
-        else {
-            cout << integer <<" doesn't have any factors that are square. ";
-            cout << endl;
-            cout << integer << " is square free. ";
-        }
-        return count;
-
     }
+    if (count > 0){
+
+        cout << userInput << " is not square free. " << endl;
+        cout << endl;
+    }
+    else {
+        cout << userInput << " doesn't have any factors that are square. " << endl;
+        cout << endl;
+        cout << userInput << " is square free. " << endl;
+        cout << endl;
+    }
+    return userInput;
 }
